@@ -3,17 +3,18 @@ import { Link } from "react-router-dom";
 
 const mainServices = [
   {
-    title: "Cameras",
-    description: "Secure camera solutions that grow with your business.",
-    icon: "📹",
-    path: "/cameras"
-  },
-  {
     title: "IT Services",
     description: "Comprehensive IT and digital transformation solutions.",
     icon: "💻",
     path: "/it-services"
+  },
+  {
+    title: "CCTV - Solutions",
+    description: "Secure camera solutions that grow with your business.",
+    icon: "📹",
+    path: "/cameras"
   }
+  
 ];
 
 const ServicesSection = () => (
