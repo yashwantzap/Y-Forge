@@ -4,12 +4,12 @@ import { Link } from "react-router-dom";
 
 const webDevServices = [
   {
-    title: "📱 Custom Web Apps",
+    title: "Custom Web Apps",
     description: "Tailored applications with unique features to grow your business online.",
     path: "/web-apps-development"
   },
   {
-    title: "🛒 E-Commerce Solutions",
+    title: "E-Commerce Solutions",
     description: "Robust online stores with secure payment and inventory management.",
     path: "/ecommerce-solutions"
   }

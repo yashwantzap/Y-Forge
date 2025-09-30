@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 
 const aiSolutions = [
   {
-    title: "🗪 AI Chatbots",
+    title: " AI Chatbots",
     description: "24/7 customer support chatbots that enhance user engagement and satisfaction.",
     path: "/ai-chatbots"
   },
   {
-    title: "🎯 Predictive Analytics",
+    title: " Predictive Analytics",
     description: "Data-driven AI to forecast trends and optimize decision-making.",
     path: "/predictive-analytics"
   },
   {
-    title: "⚙️ Automation Tools",
+    title: " Automation Tools",
     description: "Custom AI-powered automation to improve efficiency across business processes.",
     path: "/automation-tools"
   }

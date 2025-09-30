@@ -3,17 +3,17 @@ import { Link } from "react-router-dom";
 
 const itServices = [
   {
-    title: "🌐 Web Development",
+    title: " Web Development",
     description: "Custom websites and apps to grow your digital presence.",
     path: "/web-development"
   },
   {
-    title: "🤖 AI Solutions",
+    title: " AI Solutions",
     description: "Tailored AI-powered tools and automation for your business.",
     path: "/ai-solutions"
   },
   {
-    title: "📊 Data Analytics",
+    title: " Data Analytics",
     description: "Data visualization and business intelligence insights.",
     path: "/data-analytics"
   }

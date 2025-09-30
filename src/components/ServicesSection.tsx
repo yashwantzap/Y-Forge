@@ -5,13 +5,11 @@ const mainServices = [
   {
     title: "IT Services",
     description: "Comprehensive IT and digital transformation solutions.",
-    icon: "💻",
     path: "/it-services"
   },
   {
     title: "CCTV - Solutions",
     description: "Secure camera solutions that grow with your business.",
-    icon: "📹",
     path: "/cameras"
   }
   
@@ -34,7 +32,7 @@ const ServicesSection = () => (
           <Link key={idx} to={service.path} className="group">
             <Card className="group hover:shadow-elegant transition-all duration-300 transform hover:-translate-y-2 border-border/50 hover:border-primary/30 cursor-pointer">
               <CardHeader className="text-center">
-                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300">{service.icon}</div>
+                <div className="text-5xl mb-4 group-hover:scale-110 transition-transform duration-300"></div>
                 <CardTitle className="text-2xl group-hover:text-primary transition-colors">{service.title}</CardTitle>
               </CardHeader>
               <CardContent>

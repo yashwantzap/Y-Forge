@@ -39,12 +39,12 @@ const intelligentTrafficInfo = {
 };
 
 const applications = [
-  { label: "Retail and Shopping Malls", icon: "🛍️" },
-  { label: "Public Transportation Hubs", icon: "🚇" },
-  { label: "City Traffic Management", icon: "🚦" },
-  { label: "Office and Industrial Complexes", icon: "🏢" },
-  { label: "Hospitals and Healthcare Facilities", icon: "🏥" },
-  { label: "Parking Lots and Garages", icon: "🅿️" },
+  { label: "Retail and Shopping Malls", icon: "" },
+  { label: "Public Transportation Hubs", icon: "" },
+  { label: "City Traffic Management", icon: "" },
+  { label: "Office and Industrial Complexes", icon: "" },
+  { label: "Hospitals and Healthcare Facilities", icon: "" },
+  { label: "Parking Lots and Garages", icon: "" },
 ];
 
 const heroImages = [

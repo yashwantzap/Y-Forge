@@ -4,17 +4,17 @@ import { Link } from "react-router-dom";
 
 const dataAnalyticsServices = [
   {
-    title: "📈 Data Visualization",
+    title: " Data Visualization",
     description: "Clear, interactive dashboards to track your KPIs and business insights.",
     path: "/data-visualization"
   },
   {
-    title: "🗄️ Big Data Processing",
+    title: " Big Data Processing",
     description: "Efficient large-scale data pipelines for real-time analytics and reporting.",
     path: "/big-data-processing"
   },
   {
-    title: "💼 Custom BI Solutions",
+    title: " Custom BI Solutions",
     description: "Tailored Business Intelligence tools to empower data-driven strategies.",
     path: "/custom-bi-solutions"
   }

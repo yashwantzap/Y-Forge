@@ -18,7 +18,7 @@ const HeroSection = () => {
                 Starts Here
               </h1>
               <p className="text-xl text-muted-foreground leading-relaxed">
-                Y is pioneering the next generation of innovative solutions that transform businesses and accelerate growth in the digital age.
+                We are pioneering the next generation of innovative solutions that transform businesses and accelerate growth in the digital age.
               </p>
             </div>
             
