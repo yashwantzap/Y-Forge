@@ -20,8 +20,8 @@ const itServices = [
 ];
 
 const ITServicesPage = () => (
-  <section id="services" className="py-20 bg-gradient-subtle">
-    <div className="container mx-auto px-6 max-w-6xl">
+  <section id="services" className="py-20">
+    <div className="container mx-auto px-6">
       {/* Introduction */}
       <div className="text-center mb-16 max-w-4xl mx-auto space-y-6">
         <h2 className="text-4xl md:text-5xl font-bold">

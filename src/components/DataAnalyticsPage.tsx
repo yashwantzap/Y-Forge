@@ -21,7 +21,7 @@ const dataAnalyticsServices = [
 ];
 
 const DataAnalyticsPage = () => (
-  <section className="py-20 bg-gradient-subtle">
+  <section className="py-20">
     <div className="container mx-auto px-6">
       <div className="text-center mb-16">
         <h2 className="text-4xl md:text-5xl font-bold mb-4">

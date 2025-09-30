@@ -115,6 +115,15 @@ All colors MUST be HSL.
   }
 
   body {
-    @apply bg-background text-foreground;
-  }
+  @apply bg-background text-foreground;
+  /* Grid background pattern */
+  background-image: 
+    linear-gradient(to right, hsl(var(--border)) 1px, transparent 1px),
+    linear-gradient(to bottom, hsl(var(--border)) 1px, transparent 1px);
+  background-size: 32px 32px; /* Customize grid spacing as needed */
+}
+nav, footer, form {
+  background: var(--background); /* or another solid color */
+  background-image: none; /* Remove grid pattern */
+}
 }

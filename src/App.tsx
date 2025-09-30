@@ -12,6 +12,7 @@ import {
 import { AnimatePresence, motion } from "framer-motion";
 import { useState, useEffect } from "react";
 
+
 import Index from "./pages/Index";
 import HomePage from "./components/HomePage";
 import NotFound from "./pages/NotFound";
@@ -33,6 +34,12 @@ import AutomationToolsPage from "./components/AutomationToolsPage";
 import DataVisualizationPage from "./components/DataVisualizationPage";
 import BigDataProcessingPage from "./components/BigDataProcessingPage";
 import CustomBISolutionsPage from "./components/CustomBISolutionsPage";
+import MilesightPanoramicPage from "./components/MilesightPanoramicPage";
+import RetailPage from "./components/RetailVideoPage";
+import PTZSolutionPage from "./components/PTZSolutionsPage";
+import CrowdManagementPage from "./components/CrowdManagementPage";
+import SmartRemoteManagementPage from "./components/SmartRemoteManagementPage";
+
 
 const queryClient = new QueryClient();
 
@@ -52,7 +59,6 @@ const LoadingScreen = () => (
 
 const AnimatedRoutes = () => {
   const location = useLocation();
-  // Manage manual loading state on route change:
   const [loading, setLoading] = useState(false);
   const navigationType = useNavigationType();
 
@@ -293,6 +299,77 @@ const AnimatedRoutes = () => {
               </motion.div>
             }
           />
+          <Route
+            path="/panoramic-surveillance"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <MilesightPanoramicPage />
+              </motion.div>
+            }
+          />
+          <Route
+            path="/retail-video-surveillance"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <RetailPage />
+              </motion.div>
+            }
+
+          />
+          <Route
+            path="/ptz-surveillance"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <PTZSolutionPage />
+              </motion.div>
+            }
+            />
+          <Route
+            path="/smart-crowd-management"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <CrowdManagementPage />
+              </motion.div>
+            }
+            />
+            <Route
+            path="smart-remote-management"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <SmartRemoteManagementPage />
+              </motion.div>
+            }
+            />
           <Route
             path="*"
             element={
