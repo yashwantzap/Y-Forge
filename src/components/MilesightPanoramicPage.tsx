@@ -50,11 +50,6 @@ const MilesightPanoramicPage = () => (
           <p className="text-base sm:text-lg leading-relaxed mb-6 text-black/85">
             More than a wider view — a wiser one. Ultra-wide 180° & 360° AI surveillance with built-in analytics for smarter security.
           </p>
-          <Link to="/get-started">
-            <Button className="bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300">
-              Contact Us to Get Started
-            </Button>
-          </Link>
         </div>
         {/* Empty or optional hero side content */}
         <div></div>

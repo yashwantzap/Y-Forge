@@ -82,7 +82,7 @@ export default function RetailCamerasPage() {
       {/* Background image */}
       <div
         className="absolute inset-0 bg-cover bg-center opacity-20 -z-10"
-        style={{ backgroundImage: "url('/assets/bg.jpg')" }}
+        style={{ backgroundImage: "url('/assets/retail/hero.png')" }}
         aria-hidden="true"
       />
       <div className="container mx-auto px-6 lg:px-8 max-w-7xl space-y-20">
@@ -111,7 +111,7 @@ export default function RetailCamerasPage() {
           variants={containerVariants}
           className="max-w-3xl mx-auto"
         >
-          <motion.ul className="list-disc list-inside space-y-3 text-gray-600" variants={itemVariants}>
+          <motion.ul className="list-disc list-inside space-y-3 text-black" variants={itemVariants}>
             {features.map((feature) => (
               <li key={feature}>{feature}</li>
             ))}
@@ -128,11 +128,11 @@ export default function RetailCamerasPage() {
           {cameras.map(({ name, description, image }) => (
             <motion.div
               key={name}
-              className="bg-white rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
+              className="bg-card rounded-lg shadow-lg overflow-hidden cursor-pointer hover:shadow-xl transition-shadow duration-300"
               variants={itemVariants}
               whileHover={{ scale: 1.05 }}
             >
-              <img src={image} alt={name} className="w-full h-48 object-cover" />
+              <img src={image} alt={name} className="w-full h-58 object-cover" />
               <div className="p-4">
                 <h3 className="text-xl font-semibold text-gray-900">{name}</h3>
                 <p className="text-gray-600 mt-2">{description}</p>

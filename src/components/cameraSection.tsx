@@ -63,7 +63,7 @@ const CamerasPage = () => {
   }, []);
 
   return (
-    <section className="bg-background py-16 px-6 max-w-7xl mx-auto space-y-20">
+    <section className="py-16 px-6 max-w-7xl mx-auto space-y-20">
       {/* Hero Section */}
       <div className="flex flex-col md:flex-row items-center gap-12">
         <div className="md:flex-1 space-y-6">
@@ -138,7 +138,7 @@ const CamerasPage = () => {
       </div>
 
       {/* Applications Section */}
-      <div className="max-w-4xl mx-auto text-center space-y-8">
+      <div className="bg-card max-w-4xl mx-auto text-center space-y-8">
         <h2 className="text-3xl font-semibold">Applications</h2>
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
           {applications.map(({ label, icon }) => (
@@ -154,7 +154,7 @@ const CamerasPage = () => {
       </div>
 
       {/* Contact Form Section */}
-      <div className="bg-gradient-hero p-8 rounded-xl max-w-3xl mx-auto text-center space-y-6">
+      <div className="bg-card p-8 rounded-xl max-w-3xl mx-auto text-center space-y-6">
         <h3 className="text-2xl font-semibold">Contact Us</h3>
         <p className="text-muted-foreground max-w-md mx-auto">
           Have questions or need a custom solution? Reach out to our experts today.

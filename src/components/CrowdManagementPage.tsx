@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const products = [
   {
@@ -29,8 +30,8 @@ const CrowdManagementPage = () => (
   <main className="relative py-20">
     {/* Background Image */}
     <div
-      className="absolute inset-0 bg-cover bg-center opacity-20"
-      style={{ backgroundImage: "url('/assets/crowd/c.jpg')" }}
+      className="absolute inset-0 bg-cover bg-center opacity-30"
+      style={{ backgroundImage: "url('/assets/crowd/gathering.png')" }}
       aria-hidden="true"
     />
 
@@ -50,7 +51,7 @@ const CrowdManagementPage = () => (
           Crowd Management Solution
         </motion.h1>
         <motion.p
-          className="max-w-3xl mx-auto text-lg text-muted-foreground"
+          className="max-w-3xl mx-auto text-lg text-black"
           variants={itemVariants}
         >
           Integrated surveillance combining smart cameras and central management to monitor real-time occupancy and optimize staff and resources.
@@ -64,9 +65,9 @@ const CrowdManagementPage = () => (
         animate="visible"
         variants={containerVariants}
       >
-        <motion.div variants={itemVariants}>
+        <motion.div variants={itemVariants} className="bg-card rounded-lg shadow-elegant p-6 flex flex-col items-center text-center mt-6">
           <h2 className="text-2xl font-semibold mb-4 text-foreground">Real-time Occupancy</h2>
-          <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+          <ul className="list-disc list-inside space-y-2 text-black">
             <li>People counting and accurate occupancy detection in high-density areas.</li>
             <li>Dashboard displays facility occupancy to indicate limits.</li>
             <li>Filters out misinformation of repeated entries/exits.</li>
@@ -83,9 +84,9 @@ const CrowdManagementPage = () => (
   </div>
         </motion.div>
 
-        <motion.div variants={itemVariants}>
+  <motion.div variants={itemVariants} className="bg-card rounded-lg shadow-elegant p-6 flex flex-col items-center text-center mt-6">
   <h2 className="text-2xl font-semibold mb-4 text-foreground">Central Management System</h2>
-  <ul className="list-disc list-inside space-y-2 text-muted-foreground">
+  <ul className="list-disc list-inside space-y-2 text-black">
     <li>Manages large-scale data from multiple cameras in real time.</li>
     <li>Access reports daily, weekly, or monthly from anywhere.</li>
     <li>Audio alarm triggers when occupancy limits breach.</li>
@@ -114,19 +115,19 @@ const CrowdManagementPage = () => (
         </motion.div>
         <div className="grid md:grid-cols-3 gap-8 text-muted-foreground">
           <motion.div variants={itemVariants} className="bg-card p-6 rounded-lg shadow-elegant">
-            <h3 className="font-semibold text-xl mb-3">Staff Optimization</h3>
+            <h3 className="font-semibold text-xl mb-3 text-black">Staff Optimization</h3>
             <p>
               Effective resource allocation based on peak times improves revenue and operational efficiency. Reduces manual counting and physical contact.
             </p>
           </motion.div>
           <motion.div variants={itemVariants} className="bg-card p-6 rounded-lg shadow-elegant">
-            <h3 className="font-semibold text-xl mb-3">Big Data, Big Value</h3>
+            <h3 className="font-semibold text-xl mb-3 text-black">Big Data, Big Value</h3>
             <p>
               Video analytics combined with insightful reports empower strategic business decisions for marketing, sales, and operations.
             </p>
           </motion.div>
           <motion.div variants={itemVariants} className="bg-card p-6 rounded-lg shadow-elegant">
-            <h3 className="font-semibold text-xl mb-3">Zero Hardware Cost</h3>
+            <h3 className="font-semibold text-xl mb-3 text-black">Zero Hardware Cost</h3>
             <p>
               Easily upgrade existing supported hardware online without replacement, including both cameras and management system.
             </p>
@@ -175,9 +176,11 @@ const CrowdManagementPage = () => (
 
       {/* Call to Action */}
       <motion.div className="text-center mt-16">
-        <Button className="bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300">
-          Contact Yashco Solutions for Crowd Management
-        </Button>
+        <Link to="/get-started">
+                  <Button className="bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300">
+                    Learn More and Get Started
+                  </Button>
+                </Link>
       </motion.div>
     </div>
   </main>

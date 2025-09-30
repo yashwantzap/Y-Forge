@@ -57,7 +57,7 @@ const ContactSection = () => {
                 </div>
                 <div>
                   <h3 className="font-semibold text-lg">Phone</h3>
-                  <p className="text-muted-foreground">+91-9000952345</p>
+                  <p className="text-muted-foreground">+91-9581802345</p>
                 </div>
               </div>
               
@@ -78,11 +78,8 @@ const ContactSection = () => {
             <div className="bg-gradient-hero p-6 rounded-xl">
               <h3 className="font-semibold text-lg mb-2">Start Your Project Today</h3>
               <p className="text-muted-foreground mb-4">
-                Book a free consultation to discuss your technology needs and discover how Y can accelerate your growth.
+                Book a free consultation to discuss your technology needs and discover how we can accelerate your growth.
               </p>
-              <Button variant="outline" className="border-primary text-primary hover:bg-primary hover:text-primary-foreground">
-                Schedule Consultation
-              </Button>
             </div>
           </div>
         </div>

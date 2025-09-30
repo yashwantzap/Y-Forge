@@ -8,7 +8,7 @@ const Footer = () => {
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2">
             <div className="mb-4">
-              <img src={logo} alt="Y - Pioneering Technology Solutions" className="h-10 w-auto" />
+              <img src={logo} alt="Yashco Solutions - Pioneering Technology Solutions" className="h-10 w-auto" />
             </div>
             <p className="text-background/80 mb-6 max-w-sm">
               Pioneering the future of technology with innovative solutions that transform businesses and accelerate growth.
@@ -31,12 +31,12 @@ const Footer = () => {
             <ul className="space-y-2 text-background/80">
               <li>
                 <Link to="/ai-solutions" className="hover:text-background transition-colors">
-                  AI Solutions
+                  AI solutions
                 </Link>
               </li>
               <li>
                 <Link to="/cameras" className="hover:text-background transition-colors">
-                  Cameras
+                  Camera Solutions
                 </Link>
               </li>
               <li>

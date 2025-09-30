@@ -1,5 +1,6 @@
 import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
+import { Link } from "react-router-dom";
 
 const features = [
   {
@@ -177,9 +178,11 @@ const PTZSolutionPage = () => (
         animate={{ opacity: 1, y: 0 }}
         transition={{ delay: 0.5 }}
       >
-        <Button className="bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300">
-          Contact Yashco Solutions for More Information
-        </Button>
+        <Link to="/get-started">
+          <Button className="bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300">
+            Learn More and Get Started
+          </Button>
+        </Link>
       </motion.div>
     </div>
   </main>
