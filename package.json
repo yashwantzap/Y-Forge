@@ -1,0 +1,6 @@
+{
+  "scripts": {
+    "build": "cd frontend && npm run build",
+    "start": "cd api && node index.js"
+  }
+}
