@@ -13,11 +13,11 @@ const sidebarCategories = [
     ],
   },
   {
-    id: "intelligent-traffic",
-    label: "Intelligent Traffic",
+    id: "Solar-Surveillance",
+    label: "Solar Surveillance",
     items: [
-      { label: "Traffic Surveillance Solution", to: "/traffic-surveillance" },
-      { label: "Parking Management", to: "/parking-management" },
+      { label: "Solar Surveillance Solution", to: "/Solar-power-camera" },
+      { label: "Solar Traffic Solution", to: "/Solar-Traffic" },
     ],
   },
 ];

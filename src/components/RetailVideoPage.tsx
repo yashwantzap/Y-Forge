@@ -45,9 +45,9 @@ const features = [
 
 const successStories = [
   {
-    title: "6-Month ROI at Pet Store Chain",
+    title: "DMG Sand Reaches",
     summary:
-      "Boosted sales by 10% and customer satisfaction by 15% through heatmap-driven layout optimization.",
+      "Boosted sales by 10% and customer satisfaction by 15%.",
   },
   {
     title: "Comprehensive Security with 571 Cameras",
@@ -55,7 +55,7 @@ const successStories = [
       "Achieved broad coverage with advanced tech, enabling real-time response across multiple sites.",
   },
   {
-    title: "Discreet Security in Luxury Retail",
+    title: "Discreet Security in Homes",
     summary:
       "Maintained aesthetics with flush-mount design while reducing theft and liability.",
   },

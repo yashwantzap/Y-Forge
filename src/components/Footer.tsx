@@ -21,7 +21,6 @@ const Footer = () => {
                 Twitter
               </a>
               <a href="#" className="text-background/60 hover:text-background transition-colors">
-                GitHub
               </a>
             </div>
           </div>
@@ -69,7 +68,7 @@ const Footer = () => {
         </div>
         
         <div className="border-t border-background/20 mt-8 pt-8 text-center text-background/60">
-          <p>&copy; 2025 Y. All rights reserved.</p>
+          <p>&copy; 2025 Yashco Solutions. All rights reserved.</p>
         </div>
       </div>
     </footer>

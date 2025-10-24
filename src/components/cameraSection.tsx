@@ -27,11 +27,10 @@ const videoSurveillanceInfo = {
 };
 
 const intelligentTrafficInfo = {
-  title: "Intelligent Traffic",
+  title: "Solar Surveillance",
   description:
-    "AI-powered traffic monitoring, speed enforcement, parking, and entrance management.",
+    "AI-powered monitoring using solar.",
   features: [
-    { label: "Speed Enforcement Solution", to: "/speed-enforcement" },
     { label: "Traffic Surveillance Solution", to: "/traffic-surveillance" },
     { label: "Parking Management", to: "/parking-management" },
     { label: "Entrance & Exit Management", to: "/entrance-exit-management" },
@@ -39,12 +38,12 @@ const intelligentTrafficInfo = {
 };
 
 const applications = [
-  { label: "Retail and Shopping Malls", icon: "" },
-  { label: "Public Transportation Hubs", icon: "" },
-  { label: "City Traffic Management", icon: "" },
-  { label: "Office and Industrial Complexes", icon: "" },
-  { label: "Hospitals and Healthcare Facilities", icon: "" },
-  { label: "Parking Lots and Garages", icon: "" },
+  { label: "Retail and Shopping Malls", icon: "🏬" },
+  { label: "Public Transportation Hubs", icon: "🚌" },
+  { label: "City Traffic Management", icon: "🚦" },
+  { label: "Office and Industrial Complexes", icon: "🏢" },
+  { label: "Hospitals and Healthcare Facilities", icon: "🏩" },
+  { label: "Parking Lots and Garages", icon: "🅿️" },
 ];
 
 const heroImages = [

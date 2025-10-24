@@ -39,6 +39,8 @@ import RetailPage from "./components/RetailVideoPage";
 import PTZSolutionPage from "./components/PTZSolutionsPage";
 import CrowdManagementPage from "./components/CrowdManagementPage";
 import SmartRemoteManagementPage from "./components/SmartRemoteManagementPage";
+import SolarPoweredCameraPage from "./components/SolarCamera";
+import SolarTrafficSensingCameraPage from "./components/SolarTrafficPage";
 
 
 const queryClient = new QueryClient();
@@ -367,6 +369,34 @@ const AnimatedRoutes = () => {
                 transition={pageTransition}
               >
                 <SmartRemoteManagementPage />
+              </motion.div>
+            }
+            />
+            <Route
+            path="Solar-power-camera"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <SolarPoweredCameraPage />
+              </motion.div>
+            }
+            />
+            <Route
+            path="Solar-Traffic"
+            element={
+              <motion.div
+                initial="initial"
+                animate="in"
+                exit="out"
+                variants={pageVariants}
+                transition={pageTransition}
+              >
+                <SolarTrafficSensingCameraPage />
               </motion.div>
             }
             />
