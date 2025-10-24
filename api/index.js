@@ -1,13 +1,4 @@
-import express from "express";
-import cors from "cors";
-import dotenv from "dotenv";
 import nodemailer from "nodemailer";
-
-dotenv.config();
-
-const app = express();
-app.use(cors());
-app.use(express.json());
 
 const transporter = nodemailer.createTransport({
   host: process.env.SMTP_HOST,
@@ -19,7 +10,12 @@ const transporter = nodemailer.createTransport({
   },
 });
 
-app.post("/api/contact", async (req, res) => {
+export default async function handler(req, res) {
+  if (req.method !== "POST") {
+    res.setHeader("Allow", "POST");
+    return res.status(405).end("Method Not Allowed");
+  }
+
   const { name, email, phone, company, serviceType, message } = req.body;
 
   if (!name || !email || !phone || !message) {
@@ -41,16 +37,11 @@ ${message}
     `,
   };
 
-  transporter.sendMail(mailOptions, (error, info) => {
-    if (error) {
-      console.error("Email sending error:", error);
-      return res.status(500).json({ error: "Failed to send email notification" });
-    }
-    res.status(200).json({ message: "Email notification sent", info });
-  });
-});
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT}`);
-});
+  try {
+    await transporter.sendMail(mailOptions);
+    res.status(200).json({ message: "Email notification sent" });
+  } catch (error) {
+    console.error("Email sending error:", error);
+    res.status(500).json({ error: "Failed to send email notification" });
+  }
+}
