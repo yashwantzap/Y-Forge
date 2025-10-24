@@ -22,7 +22,6 @@ const videoSurveillanceInfo = {
     { label: "Retail Video Surveillance Solution", to: "/retail-video-surveillance" },
     { label: "PTZ Surveillance Solution", to: "/ptz-surveillance" },
     { label: "Smart Crowd Management Solution", to: "/smart-crowd-management" },
-    { label: "Smart Remote Management Solution", to: "/smart-remote-management" },
   ],
 };
 

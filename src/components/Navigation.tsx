@@ -9,7 +9,7 @@ const sidebarCategories = [
     items: [
       { label: "Panoramic Surveillance Solution", to: "/panoramic-surveillance" },
       { label: "Smart Crowd Management Solution", to: "/smart-crowd-management" },
-      { label: "Smart Remote Management Solution", to: "/smart-remote-management" },
+      { label: "PTZ Surveillance Solution", to: "/ptz-surveillance" },
     ],
   },
   {
