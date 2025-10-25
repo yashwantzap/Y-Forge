@@ -58,12 +58,15 @@ const Navigation = () => {
 
   return (
     <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-md border-b border-border shadow-sm">
-      <div className="container mx-auto px-6 py-4 flex items-center justify-between relative">
-        <div className="flex items-center">
-          <Link to="/">
-            <img src={logo} alt="Y - Pioneering Technology Solutions" className="h-8 w-auto" />
-          </Link>
-        </div>
+  <div className="container mx-auto px-6 py-4 flex items-center justify-between relative">
+    <div className="flex items-center gap-3">
+      <Link to="/" className="flex items-center gap-3">
+        <img src={logo} alt="Y - Pioneering Technology Solutions" className="h-8 w-auto" />
+        <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          YASHCO SOLUTIONS
+        </span>
+      </Link>
+    </div>
         {/* Desktop Menu */}
         <div className="hidden md:flex items-center space-x-8">
           <Link to="/" className="text-muted-foreground hover:text-foreground transition-colors">

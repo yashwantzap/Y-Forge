@@ -7,9 +7,12 @@ const Footer = () => {
       <div className="container mx-auto px-6">
         <div className="grid md:grid-cols-4 gap-8">
           <div className="col-span-2">
-            <div className="mb-4">
-              <img src={logo} alt="Yashco Solutions - Pioneering Technology Solutions" className="h-10 w-auto" />
-            </div>
+            <Link to="/" className="flex items-center gap-3">
+        <img src={logo} alt="Y - Pioneering Technology Solutions" className="h-8 w-auto" />
+        <span className="text-xl font-bold bg-gradient-primary bg-clip-text text-transparent">
+          YASHCO SOLUTIONS
+        </span>
+      </Link>
             <p className="text-background/80 mb-6 max-w-sm">
               Pioneering the future of technology with innovative solutions that transform businesses and accelerate growth.
             </p>
