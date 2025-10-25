@@ -38,16 +38,31 @@ const ContactSection = () => {
     };
 
     try {
-      // Use environment variable for API URL, fallback to localhost for development
       const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      
+      console.log('🔄 Sending to:', `${API_URL}/api/contact`);
+      console.log('📦 Body:', body);
       
       const res = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: { 
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(body),
       });
 
+      console.log('📡 Response status:', res.status);
+
+      // Check if response is JSON
+      const contentType = res.headers.get("content-type");
+      if (!contentType || !contentType.includes("application/json")) {
+        const textResponse = await res.text();
+        console.error('❌ Non-JSON response:', textResponse);
+        throw new Error(`Server returned non-JSON response. Status: ${res.status}`);
+      }
+
       const data = await res.json();
+      console.log('📨 Response data:', data);
       
       if (res.ok) {
         alert("✅ Message sent successfully! We'll get back to you within 24 hours.");
@@ -65,8 +80,15 @@ const ContactSection = () => {
         alert("❌ Error: " + (data.error || "Failed to send message"));
       }
     } catch (error) {
-      console.error("Network error:", error);
-      alert("❌ Network error. Please try again later.");
+      console.error("❌ Full error:", error);
+      
+      if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+        alert("❌ Cannot reach server. Please check if the API is running.");
+      } else if (error instanceof Error) {
+        alert("❌ Error: " + error.message);
+      } else {
+        alert("❌ An unexpected error occurred. Please try again later.");
+      }
     } finally {
       setIsSubmitting(false);
     }
@@ -164,7 +186,6 @@ const ContactSection = () => {
               </form>
             </CardContent>
           </Card>
-          {/* Additional info or components could go here */}
         </div>
       </div>
     </section>
