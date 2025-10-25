@@ -1,25 +1,22 @@
 import dotenv from 'dotenv';
 dotenv.config();
 
-import nodemailer from "nodemailer";
 import express from "express";
 import cors from "cors";
+import { Resend } from 'resend';
 
 const app = express();
 
-// Middleware - CORS first
+// Initialize Resend
+const resend = new Resend(process.env.RESEND_API_KEY);
+
+// Middleware - CORS
 app.use(cors({
-  origin: [
-    'http://localhost:8080',
-    'http://localhost:5173',
-    'https://yashco.onrender.com',  // Add your frontend URL
-    'https://*.onrender.com'  // Allow all Render domains
-  ],
+  origin: '*',
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
-
 
 // Body parsers
 app.use(express.json());
@@ -31,35 +28,13 @@ app.use((req, res, next) => {
   next();
 });
 
-// Create transporter with error handling
-let transporter;
-try {
-  transporter = nodemailer.createTransport({
-    host: process.env.SMTP_HOST,
-    port: parseInt(process.env.SMTP_PORT, 10),
-    secure: true,
-    auth: {
-      user: process.env.SMTP_USER,
-      pass: process.env.SMTP_PASS,
-    },
-    tls: {
-      rejectUnauthorized: false
-    }
-  });
-  console.log('✅ SMTP transporter created successfully');
-} catch (error) {
-  console.error('❌ Failed to create SMTP transporter:', error);
-}
-
 // Health check endpoint
 app.get('/health', (req, res) => {
   res.json({ 
     status: 'API is running',
     timestamp: new Date().toISOString(),
     env: {
-      hasSmtpHost: !!process.env.SMTP_HOST,
-      hasSmtpUser: !!process.env.SMTP_USER,
-      hasSmtpPass: !!process.env.SMTP_PASS,
+      hasResendApiKey: !!process.env.RESEND_API_KEY,
       hasNotificationEmail: !!process.env.NOTIFICATION_EMAIL
     }
   });
@@ -87,73 +62,83 @@ app.post('/api/contact', async (req, res) => {
       });
     }
 
-    // Check if transporter is available
-    if (!transporter) {
-      console.log('❌ SMTP transporter not initialized');
+    // Check if Resend is configured
+    if (!process.env.RESEND_API_KEY) {
+      console.log('❌ Resend API key not configured');
       return res.status(500).json({
         success: false,
-        error: "Email service not configured properly"
+        error: "Email service not configured"
       });
     }
 
     console.log('✅ Validation passed, preparing email...');
 
-    const mailOptions = {
-      from: `"Contact Form" <${process.env.SMTP_USER}>`,
-      to: process.env.NOTIFICATION_EMAIL,
+    // Send email using Resend
+    const { data, error } = await resend.emails.send({
+      from: 'onboarding@resend.dev', // Default Resend email
+      to: [process.env.NOTIFICATION_EMAIL],
       subject: `New Contact Form Submission - ${serviceType || 'General Inquiry'}`,
-      text: `
-Name: ${name}
-Email: ${email}
-Phone Number: ${phone}
-Service Type: ${serviceType || "N/A"}
-Company: ${company || "N/A"}
-Message:
-${message}
-      `,
       html: `
-        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto;">
-          <h2 style="color: #333;">New Contact Form Submission</h2>
-          <table style="width: 100%; border-collapse: collapse;">
-            <tr>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Name:</strong></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;">${name}</td>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; margin: 0 auto; padding: 20px;">
+          <h2 style="color: #333; border-bottom: 2px solid #007bff; padding-bottom: 10px;">
+            New Contact Form Submission
+          </h2>
+          
+          <table style="width: 100%; border-collapse: collapse; margin-top: 20px;">
+            <tr style="background-color: #f8f9fa;">
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold; width: 40%;">Name</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6;">${name}</td>
             </tr>
             <tr>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Email:</strong></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;">${email}</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Email</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6;">
+                <a href="mailto:${email}" style="color: #007bff; text-decoration: none;">${email}</a>
+              </td>
+            </tr>
+            <tr style="background-color: #f8f9fa;">
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Phone</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6;">
+                <a href="tel:${phone}" style="color: #007bff; text-decoration: none;">${phone}</a>
+              </td>
             </tr>
             <tr>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Phone:</strong></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;">${phone}</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Company</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6;">${company || "N/A"}</td>
             </tr>
-            <tr>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Company:</strong></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;">${company || "N/A"}</td>
-            </tr>
-            <tr>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;"><strong>Service Type:</strong></td>
-              <td style="padding: 8px; border-bottom: 1px solid #ddd;">${serviceType || "N/A"}</td>
+            <tr style="background-color: #f8f9fa;">
+              <td style="padding: 12px; border: 1px solid #dee2e6; font-weight: bold;">Service Type</td>
+              <td style="padding: 12px; border: 1px solid #dee2e6;">${serviceType || "N/A"}</td>
             </tr>
           </table>
-          <div style="margin-top: 20px; padding: 15px; background-color: #f5f5f5; border-radius: 5px;">
-            <strong>Message:</strong>
-            <p style="margin-top: 10px; white-space: pre-wrap;">${message}</p>
+          
+          <div style="margin-top: 30px; padding: 20px; background-color: #f8f9fa; border-left: 4px solid #007bff; border-radius: 4px;">
+            <h3 style="margin-top: 0; color: #333;">Message:</h3>
+            <p style="margin: 0; white-space: pre-wrap; line-height: 1.6;">${message}</p>
+          </div>
+          
+          <div style="margin-top: 30px; padding-top: 20px; border-top: 1px solid #dee2e6; text-align: center; color: #6c757d; font-size: 12px;">
+            <p>This email was sent from your website contact form</p>
+            <p>Received: ${new Date().toLocaleString()}</p>
           </div>
         </div>
       `,
-    };
+    });
 
-    console.log('📤 Sending email to:', process.env.NOTIFICATION_EMAIL);
-    
-    const info = await transporter.sendMail(mailOptions);
-    
-    console.log('✅ Email sent successfully:', info.messageId);
+    if (error) {
+      console.error('❌ Resend error:', error);
+      return res.status(500).json({ 
+        success: false, 
+        error: "Failed to send email",
+        details: error.message 
+      });
+    }
+
+    console.log('✅ Email sent successfully via Resend:', data.id);
 
     return res.status(200).json({ 
       success: true, 
       message: "Email notification sent successfully",
-      messageId: info.messageId
+      emailId: data.id
     });
 
   } catch (error) {
@@ -197,10 +182,7 @@ app.listen(PORT, '0.0.0.0', () => {
   `);
   
   console.log('Environment Check:');
-  console.log('✓ SMTP_HOST:', process.env.SMTP_HOST || '❌ Missing');
-  console.log('✓ SMTP_PORT:', process.env.SMTP_PORT || '❌ Missing');
-  console.log('✓ SMTP_USER:', process.env.SMTP_USER ? '✓ Set' : '❌ Missing');
-  console.log('✓ SMTP_PASS:', process.env.SMTP_PASS ? '✓ Set' : '❌ Missing');
+  console.log('✓ RESEND_API_KEY:', process.env.RESEND_API_KEY ? '✓ Set' : '❌ Missing');
   console.log('✓ NOTIFICATION_EMAIL:', process.env.NOTIFICATION_EMAIL || '❌ Missing');
 });
 
