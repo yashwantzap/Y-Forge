@@ -17,12 +17,12 @@ const ContactSection = () => {
 
   const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleChange = (e) => {
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
 
-  const handleSubmit = async (e) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     setIsSubmitting(true);
 
@@ -38,8 +38,10 @@ const ContactSection = () => {
     };
 
     try {
-      // Changed to relative path for Vercel deployment
-      const res = await fetch("/api", {
+      // Use environment variable for API URL, fallback to localhost for development
+      const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+      
+      const res = await fetch(`${API_URL}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
@@ -64,7 +66,7 @@ const ContactSection = () => {
       }
     } catch (error) {
       console.error("Network error:", error);
-      alert("❌ Network error: " + error.message);
+      alert("❌ Network error. Please try again later.");
     } finally {
       setIsSubmitting(false);
     }
