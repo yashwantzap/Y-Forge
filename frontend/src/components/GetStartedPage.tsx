@@ -15,6 +15,8 @@ const ContactSection = () => {
     message: "",
   });
 
+  const [isSubmitting, setIsSubmitting] = useState(false);
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
@@ -22,6 +24,7 @@ const ContactSection = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setIsSubmitting(true);
 
     const name = `${formData.firstName} ${formData.lastName}`.trim();
 
@@ -35,15 +38,18 @@ const ContactSection = () => {
     };
 
     try {
-      const res = await fetch("http://localhost:5000/api/contact", {
+      // Changed to relative path for Vercel deployment
+      const res = await fetch("/api", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(body),
       });
 
       const data = await res.json();
+      
       if (res.ok) {
-        alert("Message sent successfully!");
+        alert("✅ Message sent successfully! We'll get back to you within 24 hours.");
+        // Reset form
         setFormData({
           firstName: "",
           lastName: "",
@@ -54,10 +60,13 @@ const ContactSection = () => {
           message: "",
         });
       } else {
-        alert("Error: " + data.error);
+        alert("❌ Error: " + (data.error || "Failed to send message"));
       }
     } catch (error) {
-      alert("Network error: " + error.message);
+      console.error("Network error:", error);
+      alert("❌ Network error: " + error.message);
+    } finally {
+      setIsSubmitting(false);
     }
   };
 
@@ -88,6 +97,7 @@ const ContactSection = () => {
                     value={formData.firstName}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                   />
                   <Input
                     placeholder="Last Name"
@@ -95,6 +105,7 @@ const ContactSection = () => {
                     value={formData.lastName}
                     onChange={handleChange}
                     required
+                    disabled={isSubmitting}
                   />
                 </div>
                 <Input
@@ -104,6 +115,7 @@ const ContactSection = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                 />
                 <Input
                   placeholder="Phone Number"
@@ -112,18 +124,21 @@ const ContactSection = () => {
                   value={formData.phone}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                 />
                 <Input
                   placeholder="Company (optional)"
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
+                  disabled={isSubmitting}
                 />
                 <select
                   name="serviceType"
                   value={formData.serviceType}
                   onChange={handleChange}
                   className="w-full px-3 py-2 border rounded-lg"
+                  disabled={isSubmitting}
                 >
                   <option value="IT Services">IT Services</option>
                   <option value="CCTV Solutions">CCTV Solutions</option>
@@ -135,12 +150,14 @@ const ContactSection = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  disabled={isSubmitting}
                 />
                 <Button
                   type="submit"
                   className="w-full bg-primary hover:bg-primary-hover shadow-elegant hover:shadow-glow transition-all duration-300"
+                  disabled={isSubmitting}
                 >
-                  Send Message
+                  {isSubmitting ? "Sending..." : "Send Message"}
                 </Button>
               </form>
             </CardContent>
