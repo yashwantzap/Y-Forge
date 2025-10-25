@@ -9,11 +9,17 @@ const app = express();
 
 // Middleware - CORS first
 app.use(cors({
-  origin: process.env.FRONTEND_URL || '*',
+  origin: [
+    'http://localhost:8080',
+    'http://localhost:5173',
+    'https://yashco.onrender.com',  // Add your frontend URL
+    'https://*.onrender.com'  // Allow all Render domains
+  ],
   credentials: true,
   methods: ['GET', 'POST', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
 }));
+
 
 // Body parsers
 app.use(express.json());
