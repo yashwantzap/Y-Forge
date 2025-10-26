@@ -284,7 +284,7 @@ const GetStartedSection = () => {
                   size="lg"
                   variant="outline"
                   className="border-2"
-                  onClick={() => window.location.href = 'tel:+919492881112'}
+                  onClick={() => window.location.href = 'tel:+91 9581802345'}
                 >
                   <Phone className="w-5 h-5 mr-2" />
                   Call Us: +91 95818 02345
@@ -293,7 +293,7 @@ const GetStartedSection = () => {
                   size="lg"
                   variant="outline"
                   className="border-2"
-                  onClick={() => window.location.href = 'mailto:raghukumarnutulapati@gmail.com'}
+                  onClick={() => window.location.href = 'mailto:contact@yashcosolutions.com'}
                 >
                   <Mail className="w-5 h-5 mr-2" />
                   Email Us
