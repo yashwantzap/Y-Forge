@@ -359,7 +359,7 @@ const AnimatedRoutes = () => {
             }
             />
             <Route
-            path="smart-remote-management"
+            path="/smart-remote-management"
             element={
               <motion.div
                 initial="initial"
@@ -373,7 +373,7 @@ const AnimatedRoutes = () => {
             }
             />
             <Route
-            path="Solar-power-camera"
+            path="/Solar-power-camera"
             element={
               <motion.div
                 initial="initial"
@@ -387,7 +387,7 @@ const AnimatedRoutes = () => {
             }
             />
             <Route
-            path="Solar-Traffic"
+            path="/Solar-Traffic"
             element={
               <motion.div
                 initial="initial"

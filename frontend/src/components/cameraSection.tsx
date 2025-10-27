@@ -30,9 +30,8 @@ const intelligentTrafficInfo = {
   description:
     "AI-powered monitoring using solar.",
   features: [
-    { label: "Traffic Surveillance Solution", to: "/traffic-surveillance" },
-    { label: "Parking Management", to: "/parking-management" },
-    { label: "Entrance & Exit Management", to: "/entrance-exit-management" },
+    { label: "Solar Surveillance Solution", to: "/Solar-power-camera" },
+    { label: "Traffic Solution", to: "/Solar-traffic" },
   ],
 };
 
